@@ -2,13 +2,12 @@ import { TODO } from '@flx-learn-ts/utils'
 
 /// Для заданного числа n > 1 найти минимальный делитель, превышающий 1
 export function minDivisor(number: number): number {
-    let d = 1;
-    let i = 1
-    while (number%d == 0){
-        d += 1;
-        i = number;
-    } 
-    return d;
+    let i = 1;
+    while (i <= number){
+        i += 1
+        if (number % i == 0) break;
+    }
+    return i
 }
 
 /// Найти число Фибоначчи из ряда 1, 1, 2, 3, 5, 8, 13, 21, ... с номером n.
