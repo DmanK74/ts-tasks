@@ -9,7 +9,10 @@ export function trackLength(x1: number, y1: number, x2: number, y2: number): num
 /// Пользователь задает целое число, большее 100 (например, 3801).
 /// Определить третью цифру справа в этом числе (в данном случае 8).
 export function getThirdDigit(number: number): number {
-    throw TODO
+    let numStr = number.toString()
+    let numLen =  numStr.length
+    let numThr = numStr[numLen - 3]
+    return Number.parseInt(numThr)
 }
 
 /// Человек положил в банк сумму в s рублей под p% годовых (проценты начисляются в конце года).
