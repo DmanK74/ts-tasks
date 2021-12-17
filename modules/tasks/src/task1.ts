@@ -16,5 +16,7 @@ export function getThirdDigit(number: number): number {
 /// Сколько денег будет на счету через 3 года (с учётом сложных процентов)?
 /// Например, 100 рублей под 10% годовых превратятся в 133.1 рубля.
 export function amountAfterThreeYears(initial: number, percent: number): number {
-    throw TODO
+    for(let i = 0; i < 3; i++)
+    initial += initial/100*percent
+    return initial
 }
