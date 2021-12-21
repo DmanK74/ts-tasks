@@ -1,20 +1,46 @@
+import { assert } from 'chai';
 import { Pair, TODO } from '@flx-learn-ts/utils'
 
 /// Рассчитать среднее арифметическое элементов списка list. Вернуть 0.0, если список пуст
 export function mean(list: number[]): number {
-    throw TODO
+    
+    let listSum = 0
+
+    if(list.length != 0.0){
+        for(let count = 0; count < list.length; count ++)
+        {
+            let listNum = list[count]
+
+            listSum += listNum
+        }
+        return listSum/list.length
+    }
+    else return 0.0
 }
 
-/// Найти в заданном списке повторяющиеся элементы и вернуть
-/// ассоциативный массив с информацией о числе повторений
-/// для каждого повторяющегося элемента.
-/// Если элемент встречается только один раз, включать его в результат
-/// не следует.
+//  Найти в заданном списке повторяющиеся элементы и вернуть
+//  ассоциативный массив с информацией о числе повторений
+//  для каждого повторяющегося элемента.
+//  Если элемент встречается только один раз, включать его в результат
+//  не следует.
 /// 
 /// Например:
 /// extractRepeats(listOf("a", "b", "a")) -> mapOf("a" to 2)
 export function extractRepeats(list: string[]): Map<string, number> {
-    throw TODO
+    var arr = new Map<string, number>([])
+    let num = 0
+    
+    for(let count = 0; count < list.length; count++){
+
+        if(list[num] == list[count]){
+            
+        arr.set(list[count], count) // да я знаю, 2 count чушь, пока не придумал че тут делать(
+        }
+
+        list[num++]
+    }
+
+    return arr
 }
 
 /// Для заданного списка неотрицательных чисел и числа определить,

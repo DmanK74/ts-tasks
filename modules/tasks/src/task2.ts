@@ -23,8 +23,9 @@ export function fib(number: number): number {
 
     return prev
 }
-function targetPiece(x: number, y: number): void {
-    
+function targetPiece(king: number, rook: number): boolean {
+    if(king == rook) return true;
+    else return false;
 }
 /// Нa шахматной доске стоят черный король и две белые ладьи (ладья бьет по горизонтали и вертикали).
 /// Определить, не находится ли король под боем, а если есть угроза, то от кого именно.
@@ -33,11 +34,12 @@ function targetPiece(x: number, y: number): void {
 /// Считать, что ладьи не могут загораживать друг друга.
 export function whichRookThreatens(kingX: number, kingY: number, rookX1: number, rookY1: number, rookX2: number, rookY2: number): number {
     
-    if((kingX == rookX2 || kingY == rookY2) && (kingX == rookX1 || kingY == rookY1)) return 3
+    if ((targetPiece(kingX, rookX1) || targetPiece(kingY, rookY1))
+     && (targetPiece(kingX, rookX2) || targetPiece(kingY, rookY2))) return 3
+    
+    else if(targetPiece(kingX, rookX1) || targetPiece(kingY, rookY1)) return 1
 
-    else if(kingX == rookX1 || kingY == rookY1) return 1
-
-    else if(kingX == rookX2 || kingY == rookY2) return 2
+    else if(targetPiece(kingX, rookX2) || targetPiece(kingY, rookY2)) return 2
 
     else return 0
 }
