@@ -3,9 +3,9 @@ import { TODO } from '@flx-learn-ts/utils'
 /// Для заданного числа n > 1 найти минимальный делитель, превышающий 1
 export function minDivisor(number: number): number {
     let i = 2
-    while (number % i != 0){
-        i ++
-    }
+    
+    while (number % i != 0) i++
+
     return i
 }
 
@@ -23,23 +23,29 @@ export function fib(number: number): number {
 
     return prev
 }
-function targetPiece(king: number, rook: number): boolean {
-    if(king == rook) return true;
-    else return false;
-}
 /// Нa шахматной доске стоят черный король и две белые ладьи (ладья бьет по горизонтали и вертикали).
 /// Определить, не находится ли король под боем, а если есть угроза, то от кого именно.
 /// Вернуть 0, если угрозы нет, 1, если угроза только от первой ладьи, 2, если только от второй ладьи,
 /// и 3, если угроза от обеих ладей.
 /// Считать, что ладьи не могут загораживать друг друга.
-export function whichRookThreatens(kingX: number, kingY: number, rookX1: number, rookY1: number, rookX2: number, rookY2: number): number {
-    
-    if ((targetPiece(kingX, rookX1) || targetPiece(kingY, rookY1))
-     && (targetPiece(kingX, rookX2) || targetPiece(kingY, rookY2))) return 3
-    
-    else if(targetPiece(kingX, rookX1) || targetPiece(kingY, rookY1)) return 1
+function canHitPiece(
+    kingX: number, kingY: number,
+    rookX: number, rookY: number
+): boolean {
+    if(kingX == rookX || kingY == rookY) return true
+    else return false
+}
 
-    else if(targetPiece(kingX, rookX2) || targetPiece(kingY, rookY2)) return 2
+export function whichRookThreatens(kingX: number, kingY: number, rookX1: number, rookY1: number, rookX2: number, rookY2: number): number {
+    var chessXY1 = canHitPiece(kingX, kingY, rookX1, rookY1)
+
+    var chessXY2 = canHitPiece(kingX, kingY, rookX2, rookY2)
+    
+    if (chessXY1 && chessXY2) return 3
+    
+    else if(chessXY1) return 1
+    
+    else if(chessXY2) return 2
 
     else return 0
 }

@@ -3,19 +3,13 @@ import { Pair, TODO } from '@flx-learn-ts/utils'
 
 /// Рассчитать среднее арифметическое элементов списка list. Вернуть 0.0, если список пуст
 export function mean(list: number[]): number {
-    
     let listSum = 0
 
-    if(list.length != 0.0){
-        for(let count = 0; count < list.length; count ++)
-        {
-            let listNum = list[count]
+    if(list.length == 0) return 0.0
 
-            listSum += listNum
-        }
-        return listSum/list.length
-    }
-    else return 0.0
+    for(let item of list) listSum += item
+    
+    return listSum/list.length
 }
 
 //  Найти в заданном списке повторяющиеся элементы и вернуть
@@ -27,21 +21,25 @@ export function mean(list: number[]): number {
 /// Например:
 /// extractRepeats(listOf("a", "b", "a")) -> mapOf("a" to 2)
 export function extractRepeats(list: string[]): Map<string, number> {
-    var arr = new Map<string, number>([])
-    let num = 0
-    
-    for(let count = 0; count < list.length; count++){
+    let arr = new Map<string, number>()
+   
+    let value = 0
 
-        if(list[num] == list[count]){
-            
-        arr.set(list[count], count) // да я знаю, 2 count чушь, пока не придумал че тут делать(
+    for (let count1 = 0; count1 < list.length; count1++)
+    {
+        for (let count2 = count1 + 1; count2 < list.length; count2++) {
+
+            if(list[count1] == list[count2])
+            {
+                value ++
+                arr.set(list[count1].toString(), value)
+            } 
         }
-
-        list[num++]
     }
 
-    return arr
+      return arr
 }
+
 
 /// Для заданного списка неотрицательных чисел и числа определить,
 /// есть ли в списке пара чисел таких, что их сумма равна заданному числу.
