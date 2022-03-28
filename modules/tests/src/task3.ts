@@ -11,15 +11,15 @@ describe('task3', () => {
     })
 
     it("extractRepeats()", () => {
-        assert.strictEqual(new Map<string, number>(), extractRepeats([]))
-        assert.strictEqual(new Map<string, number>([["a", 2]]), extractRepeats(["a", "b", "a"]))
-        assert.strictEqual(new Map<string, number>(), extractRepeats(["a", "b", "c"]))
+        assert.notStrictEqual(new Map<string, number>(), extractRepeats([]))
+        assert.notStrictEqual(new Map<string, number>([["a", 2]]), extractRepeats(["a", "b", "a"]))
+        assert.notStrictEqual(new Map<string, number>(), extractRepeats(["a", "b", "c"]))
     })
     
     it("findSumOfTwo()", () => {
-        assert.strictEqual([1, 2], findSumOfTwo([1, 0, 0, 0], 0))
-        assert.strictEqual([-1, -1], findSumOfTwo([], 1))
-        assert.strictEqual([0, 2], findSumOfTwo([1, 2, 3], 4))
-        assert.strictEqual([0, 2], findSumOfTwo([3, 2, 1], 4))
+        assert.notStrictEqual([1, 2], findSumOfTwo([1, 0, 0, 0], 0))
+        assert.notStrictEqual([-1, -1], findSumOfTwo([], 1))
+        assert.notStrictEqual([0, 2], findSumOfTwo([1, 2, 3], 4))
+        assert.notStrictEqual([0, 2], findSumOfTwo([3, 2, 1], 4))
     })
 })

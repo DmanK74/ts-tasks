@@ -32,7 +32,7 @@ function canHitPiece(
     kingX: number, kingY: number,
     rookX: number, rookY: number
 ): boolean {
-    if(kingX == rookX || kingY == rookY) return true
+    if (kingX == rookX || kingY == rookY) return true
     else return false
 }
 
@@ -42,10 +42,7 @@ export function whichRookThreatens(kingX: number, kingY: number, rookX1: number,
     var chessXY2 = canHitPiece(kingX, kingY, rookX2, rookY2)
     
     if (chessXY1 && chessXY2) return 3
-    
-    else if(chessXY1) return 1
-    
-    else if(chessXY2) return 2
-
+    else if (chessXY1) return 1
+    else if (chessXY2) return 2
     else return 0
 }

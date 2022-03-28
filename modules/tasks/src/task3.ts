@@ -29,14 +29,12 @@ export function extractRepeats(list: string[]): Map<string, number> {
     {
         for (let count2 = count1 + 1; count2 < list.length; count2++) {
 
-            if(list[count1] == list[count2])
-            {
+            if (list[count1] == list[count2]) {
                 value ++
                 arr.set(list[count1].toString(), value)
             } 
         }
     }
-
       return arr
 }
 
